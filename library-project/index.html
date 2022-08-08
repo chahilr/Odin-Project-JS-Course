@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Add A Book</h1>
+    <label>Title</label>
+    <input type="text" id="inputTitle" /><br />
+    <label>Author</label>
+    <input type="text" id="inputAuthor" /><br />
+    <label># of Pages</label>
+    <input type="text" id="inputPages" /><br />
+    <label>Have you read it?</label>
+    <input type="checkbox" id="inputRead" /><br />
+    <button type="submit" id="submitBtn">Add To Library</button>
+
+    <div class="libraryContainer">
+      <h1>Library</h1>
+      <div class="libraryList"></div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
