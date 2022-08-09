@@ -1,3 +1,4 @@
+const form = document.querySelector("#addBookForm");
 const inputTitle = document.querySelector("#inputTitle");
 const inputAuthor = document.querySelector("#inputAuthor");
 const inputPages = document.querySelector("#inputPages");
@@ -28,8 +29,7 @@ function addBookToLibrary() {
   const pages = inputPages.value;
   const isRead = inputRead.value;
 
-  inputTitle.value = inputAuthor.value = inputPages.value = "";
-  inputRead.value = false;
+  form.reset();
 
   console.log(title);
   myLibrary.push(new Book(title, author, pages, isRead));

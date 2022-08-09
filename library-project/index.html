@@ -8,16 +8,19 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h1>Add A Book</h1>
-    <label>Title</label>
-    <input type="text" id="inputTitle" /><br />
-    <label>Author</label>
-    <input type="text" id="inputAuthor" /><br />
-    <label># of Pages</label>
-    <input type="text" id="inputPages" /><br />
-    <label>Have you read it?</label>
-    <input type="checkbox" id="inputRead" /><br />
-    <button type="submit" id="submitBtn">Add To Library</button>
+    <form id="addBookForm">
+      <h1>Add A Book</h1>
+      <label for="inputTitle">Title</label>
+      <input type="text" id="inputTitle" required /><br />
+      <label for="inputAuthor">Author</label>
+      <input type="text" id="inputAuthor" required /><br />
+      <label for="inputPages"># of Pages</label>
+      <input type="number" id="inputPages" min="1" required /><br />
+      <label for="inputRead">Have you read it?</label>
+      <input type="checkbox" id="inputRead" /><br />
+      <input type="reset" id="resetBtn" />
+      <input type="submit" id="submitBtn" />
+    </form>
 
     <div class="libraryContainer">
       <h1>Library</h1>
