@@ -1,5 +1,8 @@
 import RestaurantImg from "./../images/restaurant.jpeg";
 import "./styles.css";
+import addAbout from "./about";
+import addMenu from "./menu";
+import addContact from "./contact";
 
 function addHeaderImage() {
   const header = document.createElement("div");
@@ -64,97 +67,16 @@ function addContent(title) {
   contentTitle.innerText = title;
   content.appendChild(contentTitle);
 
-  if (title == "About") {
-    const p = document.createElement("p");
-    p.innerText = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo
-        necessitatibus pariatur minus quaerat vitae libero facere, neque sunt
-        ipsam non quibusdam quia veniam fugit, laboriosam saepe doloribus quae
-        officia nesciunt.`;
-    content.appendChild(p);
-  } else if (title == "Menu") {
-    const table = document.createElement("table");
-    const header1 = document.createElement("th");
-    const header2 = document.createElement("th");
-    header1.innerText = "Item";
-    header2.innerText = "Price";
-
-    table.appendChild(header1);
-    table.appendChild(header2);
-
-    let row = document.createElement("tr");
-    let item = document.createElement("td");
-    let price = document.createElement("td");
-
-    item.innerText = "Fish and Chips";
-    price.innerText = "$10.99";
-    row.appendChild(item);
-    row.appendChild(price);
-    table.appendChild(row);
-
-    row = document.createElement("tr");
-    item = document.createElement("td");
-    price = document.createElement("td");
-
-    item.innerText = "Pasta";
-    price.innerText = "$9.99";
-    row.appendChild(item);
-    row.appendChild(price);
-    table.appendChild(row);
-
-    row = document.createElement("tr");
-    item = document.createElement("td");
-    price = document.createElement("td");
-
-    item.innerText = "Steak";
-    price.innerText = "$14.99";
-    row.appendChild(item);
-    row.appendChild(price);
-    table.appendChild(row);
-    table.style.width = "100%";
-
-    content.appendChild(table);
-  } else if (title == "Contact Us") {
-    const p = document.createElement("p");
-    p.innerText = `Call at 123-456-7890
-    Email at abc@def.com`;
-    content.appendChild(p);
-
-    const scheduleTitle = document.createElement("h3");
-    scheduleTitle.innerText = "Open Hours";
-    content.appendChild(scheduleTitle);
-
-    const openHours = document.createElement("table");
-    openHours.id = "schedule";
-    const dayHeader = document.createElement("th");
-    dayHeader.innerText = "Day";
-    const hoursHeader = document.createElement("th");
-    hoursHeader.innerText = "Hours";
-    openHours.appendChild(dayHeader);
-    openHours.appendChild(hoursHeader);
-
-    const schedule = {
-      sunday: "Closed",
-      monday: "8am - 8pm",
-      tuesday: "8am - 8pm",
-      wednesday: "8am - 8pm",
-      thursday: "8am - 8pm",
-      friday: "9am - 5pm",
-      saturday: "Closed",
-    };
-
-    for (let day in schedule) {
-      let row = document.createElement("tr");
-      let dayTitle = document.createElement("td");
-      let hours = document.createElement("td");
-
-      dayTitle.innerText = day.toLocaleUpperCase();
-      hours.innerText = schedule[day];
-      row.appendChild(dayTitle);
-      row.appendChild(hours);
-      openHours.appendChild(row);
-    }
-
-    content.appendChild(openHours);
+  switch (title) {
+    case "About":
+      content.appendChild(addAbout());
+      break;
+    case "Menu":
+      content.appendChild(addMenu());
+      break;
+    case "Contact Us":
+      content.appendChild(addContact());
+      break;
   }
 
   return content;
