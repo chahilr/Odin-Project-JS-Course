@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do App</title>
+  </head>
+  <body>
+    <h1 class="hello-header">Hello [Name]!</h1>
+    <div class="splitscreen">
+      <div class="lists-window">
+        <div class="list-container">
+          <h4 class="list-title">List 1</h4>
+          <ul class="list">
+            <!-- <input type="checkbox" name="item 1" id="item1" />
+            <label for="item 1">Item 1</label> -->
+            <li class="list-item urgent-priority">Item 1</li>
+            <li class="list-item high-priority">Item 2</li>
+            <li class="list-item low-priority">Item 3</li>
+          </ul>
+        </div>
+        <div class="list-container">
+          <h4 class="list-title">List 2</h4>
+          <ul class="list">
+            <li class="list-item urgent-priority">Item a</li>
+            <li class="list-item high-priority">Item b</li>
+            <li class="list-item high-priority">Item c</li>
+            <li class="list-item urgent-priority">Item a</li>
+            <li class="list-item high-priority">Item b</li>
+            <li class="list-item high-priority">Item c</li>
+          </ul>
+        </div>
+        <div class="list-container">
+          <h4 class="list-title">List 3</h4>
+          <ul class="list">
+            <li class="list-item high-priority">Item 1a</li>
+            <li class="list-item low-priority">Item 2b</li>
+            <li class="list-item low-priority">Item 3c</li>
+          </ul>
+        </div>
+        <div class="list-container add-list-div">
+          <img id="addListBtn" src="" alt="Add Button" width="500" />
+        </div>
+      </div>
+      <div class="add-task-window">
+        <form>
+          <h2 class="new-task-header">New Task</h2>
+          <label for="task-name">Task:</label>
+          <input type="text" name="task-name" placeholder="Enter task name" />
+          <br />
+          <label for="reminder-date">Remind Me On:</label>
+          <input type="date" name="reminder-date" />
+          <br />
+          <label for="priority-list">Priority:</label>
+          <select name="priority-list" id="priority-list">
+            <option value="urgent">Urgent</option>
+            <option value="high">High Priority</option>
+            <option value="low">Low Priority</option>
+          </select>
+          <br />
+          <button type="submit">Submit</button>
+          <button type="reset">Reset</button>
+        </form>
+      </div>
+    </div>
+    <div class="reminders-window">
+      <h2 class="reminders-header">Reminders</h2>
+      <div class="reminders-list-container">
+        <ul class="reminders-list"></ul>
+      </div>
+    </div>
+
+    <script src="./main.js"></script>
+  </body>
+</html>

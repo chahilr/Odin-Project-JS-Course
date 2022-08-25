@@ -1,3 +1,6 @@
 import "./styles.css";
+import addListImage from "../images/add-button.png";
 
-// alert("This works!");
+const addListBtn = document.querySelector("#addListBtn");
+addListBtn.src = addListImage;
+addListBtn.parentElement.style.border = "none";
