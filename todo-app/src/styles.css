@@ -19,6 +19,19 @@ body {
     width: 100%;
 }
 
+
+@media only screen and (max-width: 800px) {
+    .lists-window {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .lists-window {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+}
+
 .list-container {
     margin: 1rem;
     padding: 0.5rem;
@@ -29,8 +42,35 @@ body {
 }
 
 .list-title {
-    margin: 0;
+    border: 0;
+    width: 100%;
     text-align: center;
+    background-color: inherit;
+}
+
+.list-title:focus {
+    text-decoration: underline blue;
+}
+
+.list {
+    padding: 0;
+}
+
+.list-item {
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.urgent-priority {
+    color: red;
+}
+
+.high-priority {
+    color: yellow;
+}
+
+.low-priority {
+    color: blue;
 }
 
 .scrollable {
@@ -74,14 +114,18 @@ body {
     padding: 1rem;
 }
 
+.new-task-header {
+    margin: 0;
+}
+
 .add-task-window > form {
-    line-height: 50px;
+    line-height: 5vh;
 }
 
 button {
     cursor: pointer;
     padding: 6px 12px;
-    font-size: large;
+    font-size: clamp(0.8rem, 1vw, 1rem);
     color: white;
     border-radius: 30px;
     background: rgb(71, 61, 237);
@@ -94,5 +138,12 @@ button {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     padding: 5px;
+}
+
+.checkbox {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 10px;
 }
 
