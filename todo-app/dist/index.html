@@ -10,11 +10,9 @@
     <h1 class="hello-header">Hello [Name]!</h1>
     <div class="splitscreen">
       <div class="lists-window scrollable">
-        <div class="list-container scrollable">
+        <!-- <div class="list-container scrollable">
           <input type="text" class="list-title" value="List 1" />
           <ul class="list">
-            <!-- <input type="checkbox" name="item 1" id="item1" />
-            <label for="item 1">Item 1</label> -->
             <li class="list-item urgent-priority">Item 1</li>
             <li class="list-item high-priority">Item 2</li>
             <li class="list-item low-priority">Item 3</li>
@@ -40,7 +38,7 @@
             <li class="list-item low-priority">Item 2b</li>
             <li class="list-item low-priority">Item 3c</li>
           </ul>
-        </div>
+        </div> -->
         <div class="list-container add-list-div">
           <img id="addListBtn" src="" alt="Add Button" width="500" />
         </div>
@@ -49,10 +47,16 @@
         <form>
           <h2 class="new-task-header">New Task</h2>
           <label for="task-name">Task:</label>
-          <input type="text" name="task-name" placeholder="Enter task name" />
+          <input
+            type="text"
+            name="task-name"
+            id="task-name"
+            placeholder="Enter task name"
+            required
+          />
           <br />
           <label for="reminder-date">Remind Me On:</label>
-          <input type="date" name="reminder-date" />
+          <input type="date" name="reminder-date" id="reminder-date" />
           <br />
           <label for="priority-list">Priority:</label>
           <select name="priority-list" id="priority-list">
@@ -60,6 +64,9 @@
             <option value="high">High Priority</option>
             <option value="low">Low Priority</option>
           </select>
+          <br />
+          <label for="list-groups">List</label>
+          <select name="list-groups" id="list-groups"></select>
           <br />
           <button type="submit">Submit</button>
           <button type="reset">Reset</button>
