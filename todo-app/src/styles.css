@@ -48,6 +48,14 @@ body {
     background-color: inherit;
 }
 
+.top-right {
+    display: none;
+    position: relative;
+    top: -2.5vh;
+    right: -0.5rem;
+    float: right;
+}
+
 .list-title:focus {
     text-decoration: underline blue;
 }

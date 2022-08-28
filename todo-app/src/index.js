@@ -1,5 +1,6 @@
 import "./styles.css";
 import addListImage from "../images/add-button.png";
+import deleteImage from "../images/delete-button.png";
 
 function List() {
   this.title = "Temp";
@@ -90,6 +91,20 @@ function addList() {
   listContainer.classList.add("list-container");
   listContainer.classList.add("scrollable");
 
+  const deleteButton = document.createElement("img");
+  deleteButton.src = deleteImage;
+  deleteButton.style.width = "3vh";
+  deleteButton.style.cursor = "pointer";
+  deleteButton.classList.add("top-right");
+  deleteButton.classList.add("delete-button");
+
+  listContainer.addEventListener("mouseenter", () => {
+    deleteButton.style.display = "inline";
+  });
+  listContainer.addEventListener("mouseleave", () => {
+    deleteButton.style.display = "none";
+  });
+
   let newList = new List();
   lists.push(newList);
 
@@ -111,7 +126,14 @@ function addList() {
   const list = document.createElement("ul");
   list.classList.add("list");
 
+  deleteButton.addEventListener("click", () => {
+    listsWindow.removeChild(listContainer);
+    lists = lists.filter((list) => list != newList);
+    updateListOptions();
+  });
+
   listContainer.appendChild(listTitle);
+  listContainer.appendChild(deleteButton);
   listContainer.appendChild(list);
 
   listsWindow.appendChild(listContainer);
