@@ -14,24 +14,43 @@ function Task(text, dueDate, priority) {
   this.isChecked = false;
 }
 
-let lists = [];
-
 const listsWindow = document.querySelector(".lists-window");
 
-const addListBtn = document.querySelector("#addListBtn");
-addListBtn.src = addListImage;
-addListBtn.parentElement.style.border = "none";
-addListBtn.addEventListener("click", addList);
-
-const listItems = document.querySelectorAll(".list > li");
-listItems.forEach(addCheckbox);
+let lists = localStorage.getItem("lists");
+if (lists == null) lists = [];
+else lists = JSON.parse(lists);
 
 const form = document.querySelector("form");
 const formListOptions = form.querySelector("#list-groups");
 updateListOptions();
 form.onsubmit = addTask;
 
+const addListBtn = (() => {
+  const listContainer = document.createElement("div");
+  listContainer.classList.add("list-container");
+  listContainer.classList.add("add-list-div");
+
+  const addListBtn = document.createElement("img");
+  addListBtn.id = "addListBtn";
+  addListBtn.src = addListImage;
+  listContainer.appendChild(addListBtn);
+  addListBtn.parentElement.style.border = "none";
+  addListBtn.addEventListener("click", () => {
+    const newList = new List();
+    lists.push(newList);
+    addListContainer(newList);
+  });
+
+  return listContainer;
+})();
+
+updateLists();
+
 function updateLists() {
+  listsWindow.innerHTML = "";
+  lists.forEach((list) => {
+    addListContainer(list);
+  });
   const listContainers = document.querySelectorAll(".list-container");
 
   listContainers.forEach((container) => {
@@ -53,6 +72,10 @@ function updateLists() {
       addDeleteBtn(listTitle.value, li);
     });
   });
+
+  listsWindow.appendChild(addListBtn);
+
+  localStorage.setItem("lists", JSON.stringify(lists));
 }
 
 function addTask() {
@@ -104,7 +127,7 @@ function addDeleteBtn(listTitle, listItem) {
   listItem.appendChild(deleteBtn);
 }
 
-function addList() {
+function addListContainer(newList) {
   const listContainer = document.createElement("div");
   listContainer.classList.add("list-container");
   listContainer.classList.add("scrollable");
@@ -122,9 +145,6 @@ function addList() {
   listContainer.addEventListener("mouseleave", () => {
     deleteButton.style.display = "none";
   });
-
-  let newList = new List();
-  lists.push(newList);
 
   const listTitle = document.createElement("input");
   listTitle.type = "text";
@@ -155,7 +175,7 @@ function addList() {
   listContainer.appendChild(list);
 
   listsWindow.appendChild(listContainer);
-  listsWindow.appendChild(addListBtn.parentElement);
+  listsWindow.appendChild(addListBtn);
   listTitle.focus();
   updateListOptions();
 }
