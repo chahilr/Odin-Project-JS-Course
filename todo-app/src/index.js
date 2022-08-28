@@ -24,7 +24,7 @@ addListBtn.parentElement.style.border = "none";
 addListBtn.addEventListener("click", addList);
 
 const listItems = document.querySelectorAll(".list > li");
-listItems.forEach(addButton);
+listItems.forEach(addCheckbox);
 
 const form = document.querySelector("form");
 const formListOptions = form.querySelector("#list-groups");
@@ -48,8 +48,9 @@ function updateLists() {
       li.classList.add("list-item");
       li.classList.add(task.priority);
       li.innerText = task.text;
-      addButton(li);
       ul.appendChild(li);
+      addCheckbox(listTitle.value, li);
+      addDeleteBtn(listTitle.value, li);
     });
   });
 }
@@ -70,7 +71,7 @@ function addTask() {
   updateLists();
 }
 
-function addButton(listItem) {
+function addCheckbox(listTitle, listItem) {
   const checkButton = document.createElement("input");
   checkButton.type = "checkbox";
   checkButton.style.width = "10px";
@@ -78,12 +79,29 @@ function addButton(listItem) {
   checkButton.style.backgroundColor = "white";
   checkButton.style.borderRadius = "10px";
 
-  checkButton.onclick = () =>
-    (listItem.style.textDecoration = checkButton.checked
+  checkButton.onclick = () => {
+    listItem.style.textDecoration = checkButton.checked
       ? "line-through"
-      : "none");
+      : "none";
+  };
 
   listItem.prepend(checkButton);
+}
+
+function addDeleteBtn(listTitle, listItem) {
+  const deleteBtn = document.createElement("img");
+  deleteBtn.src = deleteImage;
+  deleteBtn.style.width = "1rem";
+  deleteBtn.style.float = "right";
+  deleteBtn.classList.add("delete-button");
+  deleteBtn.addEventListener("click", () => {
+    let list = lists.find((list) => list.title == listTitle);
+    console.log(list);
+    listItem.parentNode.removeChild(listItem);
+    list.items = list.items.filter((item) => item.text != listItem.innerText);
+    updateLists();
+  });
+  listItem.appendChild(deleteBtn);
 }
 
 function addList() {
@@ -93,13 +111,13 @@ function addList() {
 
   const deleteButton = document.createElement("img");
   deleteButton.src = deleteImage;
-  deleteButton.style.width = "3vh";
+  deleteButton.style.width = "2vh";
   deleteButton.style.cursor = "pointer";
   deleteButton.classList.add("top-right");
   deleteButton.classList.add("delete-button");
 
   listContainer.addEventListener("mouseenter", () => {
-    deleteButton.style.display = "inline";
+    deleteButton.style.display = "inline-block";
   });
   listContainer.addEventListener("mouseleave", () => {
     deleteButton.style.display = "none";
